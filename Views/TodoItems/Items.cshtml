@@ -1,0 +1,62 @@
+﻿<h1>Welcome,</h1>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <p>@ViewData["message"]</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<p>Here is your to-do list:</p>
+
+
+
+<a href="/TodoItems/CreateNew" class="btn-btn-primary">Create New</a>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Title</th>
+                <td>@item.Description</td>
+                <td>@item.Deadline</td>
+                <td>
+                    <a href="/TodoItems/Edit?id=@item.Id" class="btn btn-warning">Edit</a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Delete
+                    </button>
+                    
+                    
+                </td>
+            </tr>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                     <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                         <div class="modal-body">
+                             <p>Delete Item, Are you sure?</p>
+                        </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                             <a href="/TodoItems/Delete?id=@item.Id"
+                             data-id="@item.Id" class="btn btn-danger">Delete</a>
+                         </div>
+                 </div>
+            </div>
+        </div>
+        }
+    </tbody>
+</table>
+
+
+
