@@ -18,7 +18,6 @@ namespace ToDoList.Controllers
         }
         public IActionResult CreateNew()
         {
-            var result = context.list.ToList();
             return View();
 
         }

@@ -14,11 +14,8 @@ namespace ToDoList.Controllers
         [HttpPost]
         public IActionResult Create(User user)
         {
-            var name = user.Name;
-            Response.Cookies.Append("name", name);
             context.users.Add(user);
             context.SaveChanges();
-            ViewData["name"] = Request.Cookies["name"];
             return View();
         }
         
